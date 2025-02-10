@@ -9,7 +9,7 @@ function TwitchStreams() {
 
   const CLIENT_ID = process.env.NEXT_PUBLIC_TWITCH_CLIENT_ID
   const ACCESS_TOKEN = process.env.NEXT_PUBLIC_TWITCH_ACCESS_TOKEN
-  const PARENT = process.env.NEXT_PUBLIC_TWITCH_PARENT || "localhost"
+  const PARENT = process.env.NEXT_PUBLIC_TWITCH_PARENT || "https://next-psi-three.vercel.app/"
 
   useEffect(() => {
     async function fetchStreams() {

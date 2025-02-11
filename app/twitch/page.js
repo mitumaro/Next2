@@ -9,7 +9,7 @@ function TwitchStreams() {
 
   const CLIENT_ID = process.env.NEXT_PUBLIC_TWITCH_CLIENT_ID
   const ACCESS_TOKEN = process.env.NEXT_PUBLIC_TWITCH_ACCESS_TOKEN
-  const PARENT = process.env.NEXT_PUBLIC_TWITCH_PARENT || "next2-green.vercel.app"
+  const PARENT = process.env.NEXT_PUBLIC_TWITCH_PARENT || "localhost"
 
   useEffect(() => {
     async function fetchStreams() {
@@ -97,7 +97,8 @@ function StreamSection({ title, streams, parent }) {
   )
 }
 
-function StreamCard({ stream, parent }) {
+function StreamCard({ stream }) {
+  console.log("Clip data:", stream.clip); 
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden">
       <a
@@ -123,7 +124,7 @@ function StreamCard({ stream, parent }) {
             <h4 className="font-semibold mb-2 text-[#9146FF]">Latest Clip</h4>
             <div className="relative pt-[56.25%]">
               <iframe
-                src={`https://clips.twitch.tv/embed?clip=${stream.clip.id}&parent=${parent}`}
+                src={`https://clips.twitch.tv/embed?clip=${stream.clip.id}&parent=localhost`}
                 className="absolute top-0 left-0 w-full h-full"
                 allowFullScreen
               ></iframe>

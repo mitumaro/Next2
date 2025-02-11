@@ -7,9 +7,19 @@ function TwitchStreams() {
   const [japaneseStreams, setJapaneseStreams] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const CLIENT_ID = process.env.NEXT_PUBLIC_TWITCH_CLIENT_ID
-  const ACCESS_TOKEN = process.env.NEXT_PUBLIC_TWITCH_ACCESS_TOKEN
-  const PARENT = process.env.NEXT_PUBLIC_TWITCH_PARENT || "next2-green.vercel.app"
+  useEffect(() => {
+    async function fetchStreams() {
+      try {
+        const res = await fetch("/api/twitch");  // サーバーレス関数を呼び出し
+        const data = await res.json();
+        setStreams(data.data || []);
+      } catch (error) {
+        console.error("Error fetching streams:", error);
+      }
+    }
+
+    fetchStreams();
+  }, []);
 
   useEffect(() => {
     async function fetchStreams() {

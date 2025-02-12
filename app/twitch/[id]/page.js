@@ -84,7 +84,7 @@ export default function GameClips() {
             {/* クリップが選ばれたときだけ埋め込む */}
             <div className="relative pt-[56.25%]">
               <iframe
-                src={`https://clips.twitch.tv/embed?clip=${clip.id}&parent=next2-green.vercel.app&autoplay=${playingClip === clip.id ? "true" : "false"}`}
+                src={`https://clips.twitch.tv/embed?clip=${clip.id}&parent=localhost&autoplay=${playingClip === clip.id ? "true" : "false"}`}
                 className="absolute top-0 left-0 w-full h-full"
                 allowFullScreen
                 title="Twitch Clip"
